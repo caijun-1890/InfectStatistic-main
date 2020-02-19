@@ -476,12 +476,11 @@ public class InfectStatistic {
     }
 
     public static void main(String[] args) {
-        String[] arg={"list","-log","C:\\Users\\61685\\IdeaProjects\\221701324\\log\\","-date","2020-01-22","-out","C:\\Users\\61685\\IdeaProjects\\221701324\\result\\listout1.txt"
-        ,"-province","全国","-type","ip" };
         InfectStatistic tt = new InfectStatistic();
-        InfectStatistic.Command command = tt.new Command(arg);
-        boolean b = command.isrt_cmd();
+        InfectStatistic.Command command = tt.new Command(args);//保存命令
+        boolean isrt = command.isrt_cmd();//执行命令
 
+        //实现命令操作
         InfectStatistic.File_handle filehandle = tt.new File_handle();
         filehandle.get_Flist();
         filehandle.Write_txt();
