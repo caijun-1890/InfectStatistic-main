@@ -68,7 +68,7 @@ public class InfectStatistic {
                 } else if (cmd[i].equals(li_cmd[2])) {
                     i++;
                     i = get_Date(i);
-                    if(i == -1) { //说明上述步骤中发现命令行出错
+                    if(i == -1) {
                         System.out.println("日期参数错误");
                         return false;
                     }
@@ -77,7 +77,7 @@ public class InfectStatistic {
                 } else if (cmd[i].equals(li_cmd[3])) {
                     i++;
                     i = get_Type(i);
-                    if(i == -1) { //说明上述步骤中发现命令行出错
+                    if(i == -1) {
                         System.out.println("患者参数错误");
                         return false;
                     }
@@ -85,7 +85,7 @@ public class InfectStatistic {
                 } else if (cmd[i].equals(li_cmd[4])) {
                     i++;
                     i = get_Province(i);
-                    if(i == -1) { //说明上述步骤中发现命令行出错
+                    if(i == -1) {
                         System.out.println("省份参数错误");
                         return false;
                     }
@@ -175,7 +175,7 @@ public class InfectStatistic {
 
         //-type,获取指定类型
         public int get_Type(int t) {
-            int n=t-1;
+            int n=t-1;//检测后面是否还有参数
             if (t < cmd.length) {
                 for (int i = 0; i < 4; i++)//默认为不输出
                 {
@@ -206,8 +206,8 @@ public class InfectStatistic {
 
         //-province,获取指定省份
         public int get_Province(int t) {
-            int n = t-1;
-            int fg=0;
+            int n = t-1;//检测后面是否还有参数
+            int fg=0;//标志位
             if (t < cmd.length) {
                 is_province[0] = 0;//取消默认
                 while (t < cmd.length) {
@@ -308,7 +308,7 @@ public class InfectStatistic {
                 num[0] = Integer.valueOf(txt_str[3]);//把人数转化为int类型
                 for (int i = 0; i < province.length; i++) {
                     if (txt_str[0].equals(province[i])) {
-                        //System.out.println(province[i]);
+                        //System.out.println(province[i]);用来检验输出
                         person[i][0] += num[0];
                         person[0][0] += num[0];
                         if(flag == 0) //省份未指定
