@@ -437,7 +437,7 @@ public class InfectStatistic {
                         fwrite.write(province[i] + " ");
                         for (int j = 0; j < type.length; j++) {
                             if (in_type[j] == 1) {
-                                fwrite.write(cntype[j] + " "+ person[i][j] + "人");
+                                fwrite.write(cntype[j]+ person[i][j] + "人"+" ");//顺序默认按感染患者，疑似患者，治愈，死亡，方便查看
                             }
                         }
                         fwrite.write("\r\n");
@@ -461,7 +461,7 @@ public class InfectStatistic {
                         System.out.print(province[i] + " ");
                         for (int j = 0; j < type.length; j++) {
                             if (in_type[j] == 1) {
-                                System.out.print(cntype[j] + " "+ person[i][j] + "人");
+                                System.out.print(cntype[j] + person[i][j] + "人"+" ");//顺序默认
                             }
                         }
                         System.out.print("\n");
@@ -476,8 +476,10 @@ public class InfectStatistic {
     }
 
     public static void main(String[] args) {
+        String[] arg={"list","-log","C:\\Users\\61685\\IdeaProjects\\221701324\\log\\","-out","C:\\Users\\61685\\IdeaProjects\\221701324\\result\\ListOut2.txt",
+                "-date","2020-01-23","-type","cure","dead","ip","-province","全国","浙江","福建"};
         InfectStatistic tt = new InfectStatistic();
-        InfectStatistic.Command command = tt.new Command(args);//保存命令
+        InfectStatistic.Command command = tt.new Command(arg);//保存命令
         boolean isrt = command.isrt_cmd();//执行命令
 
         //实现命令操作
