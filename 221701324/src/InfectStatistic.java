@@ -450,6 +450,29 @@ public class InfectStatistic {
             }
 
         }
+
+        //idea输出文本
+        public void show() {
+            try {
+                if(is_province[0]==0)
+                    is_province[0]=1;
+                for (int i = 0; i < province.length; i++) {
+                    if (is_province[i] == 1) {
+                        System.out.print(province[i] + " ");
+                        for (int j = 0; j < type.length; j++) {
+                            if (in_type[j] == 1) {
+                                System.out.print(cntype[j] + " "+ person[i][j] + "人");
+                            }
+                        }
+                        System.out.print("\n");
+                    }
+                }
+                System.out.print("// 该文档并非真实数据，仅供测试使用");
+            } catch (Exception ioe) {
+                ioe.printStackTrace();
+            }
+
+        }
     }
 
     public static void main(String[] args) {
@@ -461,6 +484,7 @@ public class InfectStatistic {
         InfectStatistic.File_handle filehandle = tt.new File_handle();
         filehandle.get_Flist();
         filehandle.Write_txt();
+        filehandle.show();
     }
 
 
