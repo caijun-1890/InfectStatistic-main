@@ -476,7 +476,7 @@ public class InfectStatistic {
     }
 
     public static void main(String[] args) {
-        String[] arg={"list","-log","C:\\Users\\61685\\IdeaProjects\\221701324\\log\\","-date","2020-01-23","-out","C:\\Users\\61685\\IdeaProjects\\221701324\\result\\listout1.txt"};
+        String[] arg={"list","-log","C:\\Users\\61685\\IdeaProjects\\221701324\\log\\","-date","2020-01-22","-out","C:\\Users\\61685\\IdeaProjects\\221701324\\result\\listout1.txt"};
         InfectStatistic tt = new InfectStatistic();
         InfectStatistic.Command command = tt.new Command(arg);
         boolean b = command.isrt_cmd();
