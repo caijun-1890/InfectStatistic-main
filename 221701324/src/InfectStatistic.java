@@ -48,6 +48,9 @@ public class InfectStatistic {
                 return false;
             }
             int i;
+            int istake0=0;
+            int istake1=0;
+            //-log,-out必须附带
             for (i = 1; i < cmd.length; i++) {//参数验证
                 if (cmd[i].equals(li_cmd[0])) {
                     i++;//读取地址
@@ -56,6 +59,8 @@ public class InfectStatistic {
                         System.out.println("输入日志路径参数错误");
                         return false;
                     }
+                    else
+                        istake0++;//检测-log是否产生
 
                 } else if (cmd[i].equals(li_cmd[1])) {
                     i++;//读取地址
@@ -64,6 +69,8 @@ public class InfectStatistic {
                         System.out.println("输出日志路径参数错误");
                         return false;
                     }
+                    else
+                        istake1++;//检测-log是否产生
 
                 } else if (cmd[i].equals(li_cmd[2])) {
                     i++;
@@ -94,6 +101,13 @@ public class InfectStatistic {
                     System.out.println("无该参数，请检查输入是否错误");
                     return false;
                 }
+            }
+            if(istake0<1){
+                System.out.println("请输入正确的-log指令");
+                return false;
+            }else if(istake1<1){
+                System.out.println("请输入正确的-out指令");
+                return false;
             }
             return true;
 
@@ -476,19 +490,17 @@ public class InfectStatistic {
     }
 
     public static void main(String[] args) {
-        String[] arg={"list","-log","C:\\Users\\61685\\IdeaProjects\\221701324\\log\\","-out","C:\\Users\\61685\\IdeaProjects\\221701324\\result\\ListOut2.txt",
-                "-date","2020-01-23","-type","cure","dead","ip","-province","全国","浙江","福建"};
+        String[] arg={"list","-log","C:\\Users\\61685\\IdeaProjects\\221701324\\log\\"};
         InfectStatistic tt = new InfectStatistic();
         InfectStatistic.Command command = tt.new Command(arg);//保存命令
         boolean isrt = command.isrt_cmd();//执行命令
-
-        //实现命令操作
-        InfectStatistic.File_handle filehandle = tt.new File_handle();
-        filehandle.get_Flist();
-        filehandle.Write_txt();
-        filehandle.show();
+        if(isrt){//指令正确进行操作
+            //实现命令操作
+            InfectStatistic.File_handle filehandle = tt.new File_handle();
+            filehandle.get_Flist();
+            filehandle.Write_txt();
+            filehandle.show();
+        }
     }
-
-
-
+    
 }
