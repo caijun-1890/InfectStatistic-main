@@ -490,9 +490,8 @@ public class InfectStatistic {
     }
 
     public static void main(String[] args) {
-        String[] arg={"list","-log","C:\\Users\\61685\\IdeaProjects\\221701324\\log\\"};
         InfectStatistic tt = new InfectStatistic();
-        InfectStatistic.Command command = tt.new Command(arg);//保存命令
+        InfectStatistic.Command command = tt.new Command(args);//保存命令
         boolean isrt = command.isrt_cmd();//执行命令
         if(isrt){//指令正确进行操作
             //实现命令操作
@@ -502,5 +501,5 @@ public class InfectStatistic {
             filehandle.show();
         }
     }
-    
+
 }
